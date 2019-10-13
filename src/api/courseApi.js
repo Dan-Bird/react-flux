@@ -26,8 +26,8 @@ export function saveCourse(course) {
     body: JSON.stringify({
       ...course,
       // Parse authorId to a number (in case it was sent as a string).
-      authorId: parseInt(course.authorId, 10)
-    })
+      authorId: parseInt(course.authorId, 10),
+    }),
   })
     .then(handleResponse)
     .catch(handleError);
