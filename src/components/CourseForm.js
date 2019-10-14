@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextInput from './common/TextInput';
 
-debugger;
 const CourseForm = props => {
   return (
     <form onSubmit={props.onSubmit}>
