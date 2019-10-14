@@ -1,12 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const CourseList = props => {
   return (
     <table className="table">
       <thead>
         <tr>
+          <th>&nbsp;</th>
           <th>Title</th>
           <th>Author ID</th>
           <th>Category</th>
@@ -17,7 +18,15 @@ const CourseList = props => {
           return (
             <tr key={course.id}>
               <td>
-                <Link to={"/course/" + course.slug}>{course.title}</Link>
+                <button
+                  className="btn btn-outline-danger"
+                  onClick={() => props.deleteCourse(course.id)}
+                >
+                  Delete
+                </button>
+              </td>
+              <td>
+                <Link to={'/course/' + course.slug}>{course.title}</Link>
               </td>
               <td>{course.authorId}</td>
               <td>{course.category}</td>
@@ -30,14 +39,15 @@ const CourseList = props => {
 };
 
 CourseList.propTypes = {
+  deleteCourse: PropTypes.func.isRequired,
   courses: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       authorId: PropTypes.number.isRequired,
-      category: PropTypes.string.isRequired
+      category: PropTypes.string.isRequired,
     })
-  ).isRequired
+  ).isRequired,
 };
 
 export default CourseList;
